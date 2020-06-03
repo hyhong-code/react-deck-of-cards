@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Card from "./Card";
+import "./Deck.css";
+
 const API_BASE_URL = "https://deckofcardsapi.com/api/deck/";
 
 class Deck extends Component {
@@ -36,7 +38,7 @@ class Deck extends Component {
 
   renderCards() {
     return this.state.drawn.map((card) => (
-      <Card name={card.name} image={card.image} />
+      <Card key={card.code} name={card.name} image={card.image} />
     ));
   }
 
@@ -45,7 +47,7 @@ class Deck extends Component {
       <div>
         <h1>Card Dealer</h1>
         <button onClick={this.handleClick}>GIMMME A CARD!</button>
-        <div>{this.renderCards()}</div>
+        <div className="Deck-cardarea">{this.renderCards()}</div>
       </div>
     );
   }
